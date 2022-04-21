@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MeetingExceptions;
 
 namespace PersonalAgenda
 {
@@ -28,7 +29,7 @@ namespace PersonalAgenda
             this.date = date;
             if (DateTime.Now > date)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new DateTooOldException("La data inserita è troppo vecchia");
             }
             this.name = name;   
             this.meetingAddress = meetingPoint;
@@ -40,7 +41,7 @@ namespace PersonalAgenda
             //Throw exception
             if (DateTime.Now > date)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new DateTooOldException("La data inserita è troppo vecchia");
             }
         }
 
