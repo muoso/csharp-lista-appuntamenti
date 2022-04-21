@@ -10,7 +10,7 @@ namespace PersonalAgenda
     {
         private DateTime date;
         private string name;
-        private string meetingPoint;
+        private string meetingAddress;
 
         public string Name
         {
@@ -18,28 +18,37 @@ namespace PersonalAgenda
             set { name = value; }
         }
 
-        public string MeetingPoint
+        public string MeetingAddress
         {
-            get { return meetingPoint; }    
-            set { meetingPoint = value; }
+            get { return meetingAddress; }    
+            set { meetingAddress = value; }
         }
         public Appuntamento(DateTime date, string name, string meetingPoint)
         {
             this.date = date;
-            //Throw exception
+            if (DateTime.Now > date)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             this.name = name;   
-            this.meetingPoint = meetingPoint;
+            this.meetingAddress = meetingPoint;
         }
 
         public void SetDate(DateTime date)
         {
             this.date=date;
             //Throw exception
+            if (DateTime.Now > date)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
         }
 
         public DateTime GetDate()
         {
             return this.date;
         }
+
+       
     }
 }
